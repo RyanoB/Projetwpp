@@ -1,9 +1,11 @@
 name: "Build et deploiement d'une image Docker"
 
 on:
+  workflow_dispatch:
   push:
-    branches: 
+    branches:
       - main
+
 
 jobs:
   build:
