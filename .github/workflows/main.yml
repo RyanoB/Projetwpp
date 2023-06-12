@@ -25,6 +25,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
+        tags : ghcr.io/RyanoB/brief-8:latest
         run: docker push docker/example-voting-app-vote:latest
 
   
