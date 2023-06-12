@@ -19,7 +19,7 @@ jobs:
         uses: docker/setup-buildx-action@v1
         
       - name: Build Docker image
-        run: docker build . --tag ghcr.io/RyanoB/brief-8:latest
+        run: docker build . -t ghcr.io/RyanoB/brief-8:latest
         
       - name: Log in to Docker registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
