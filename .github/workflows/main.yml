@@ -19,13 +19,13 @@ jobs:
         uses: docker/setup-buildx-action@v1
         
       - name: Build Docker image
-        run: docker build . -t mikesir87/votingapp-worker:latest
+        run: docker build . -t docker/example-voting-app-vote:latest
         
       - name: Log in to Docker registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push mikesir87/votingapp-worker:latest
+        run: docker push docker/example-voting-app-vote:latest
 
   
  
