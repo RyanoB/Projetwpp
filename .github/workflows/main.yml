@@ -8,7 +8,7 @@ on:
 env:
   REGISTRY: ghrc.io
   IMAGE_NAME: ${{ github.repository }}
-  DOMAIN_NAME: simplonryan.space
+ 
   
 
 
@@ -26,15 +26,11 @@ jobs:
       - name: Connexion au registry de GitHub
         uses: docker/login-action@v2
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.REGISTRY_CONTIANER }}
           username: ${{ secret.DOCKER_USERNAME }}
           password: ${{ secret.DOCKER_PASSWORD }}
           
-        - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+ 
         
         - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -42,7 +38,7 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/ryanob/brief-8:latest
-          labels: ${{ steps.meta.outputs.labels }}
+
         
 
  
