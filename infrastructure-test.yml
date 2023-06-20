@@ -71,8 +71,8 @@ spec:
         app: votingapp
     spec:
       containers:
-      - name: alfred-voting
-        image: docker.io/mikesir87/votingapp-worker:latest
+      - name: votingapp
+        image: ghcr.io/devsoleo/brief-8:latest
         resources:
           requests:
             cpu: 100m
@@ -97,6 +97,7 @@ kind: Service
 metadata:
   name: front-service
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
   selector:
