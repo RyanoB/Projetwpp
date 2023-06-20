@@ -97,7 +97,6 @@ kind: Service
 metadata:
   name: front-service
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
   selector:
