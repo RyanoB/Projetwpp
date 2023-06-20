@@ -1,4 +1,4 @@
-name: "Build et deploiement d'une image Docker"
+name: "Build et deploiement image Docker"
 
 on:
   workflow_dispatch:
