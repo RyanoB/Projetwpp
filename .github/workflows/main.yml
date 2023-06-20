@@ -53,5 +53,4 @@ jobs:
           kubectl apply -f ./infrastructure-test.yml
           kubectl apply -f ./autoscaler.yml
           kubectl apply -f ./ingress.yml
-          kubectl apply -f ./certificate-issuer.yml
           kubectl apply - f ./grafana.yml
