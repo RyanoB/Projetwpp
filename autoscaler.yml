@@ -1,5 +1,5 @@
 ---
-# Autoscale Voteap
+# Autoscale Voteapp
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
