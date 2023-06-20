@@ -1,25 +1,28 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: simple-frontend-ingress
   annotations:
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-by-header: X-Canary
-    nginx.ingress.kubernetes.io/canary-weight: "50"
-  name: ingress-nginx
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: letsencrypt-prod
+    cert-manager.io/acme-challenge-type: http01
 spec:
-  ingressClassName: nginx
+  tls:
+    - hosts:
+      - simplonryan.space
+      secretName: frontend-tls
   rules:
-    - host: ryansimplon.space
-      http:
-        paths:
-          - backend:
-              service:
-                name: canary-service
-                port:
-                  number: 80
-            path: /
-            pathType: ImplementationSpecific
+  - host: simplonryan.space
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: front-service
+            port: 
+              number: 80
   
 
   
