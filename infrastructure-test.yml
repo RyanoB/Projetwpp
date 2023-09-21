@@ -31,7 +31,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: redis-credentials
-              key: password
+              key: redis-password
         resources:
           requests:
             cpu: 100m
@@ -42,6 +42,7 @@ spec:
         ports:
         - containerPort: 6379
           name: redis
+
 ---
 # Service for Redis (Cluster IP)
 apiVersion: v1
@@ -89,7 +90,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: redis-credentials
-              key: password
+              key: redis-password
 
 ---
 apiVersion: v1
@@ -97,6 +98,7 @@ kind: Service
 metadata:
   name: front-service
 spec:
+  type: LoadBalancer
   ports:
     - port: 80
   selector:
